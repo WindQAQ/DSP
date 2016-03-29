@@ -1,1 +1,1 @@
-# Fundamentals of Speech Signal Processing 2016 Spring
+# Fundamentals of Speech Signal Processing, 2016 Spring
