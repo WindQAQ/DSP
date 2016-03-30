@@ -21,9 +21,13 @@ build_model:
 	./train 1 model_init.txt seq_model_04.txt model_04.txt	
 	./train 1 model_init.txt seq_model_05.txt model_05.txt	
 
-run_test:
+run_test1:
 	$(CC) $(CFLAGS) test.c hmm.h -o test
 	./test modellist.txt testing_data1.txt result1.txt
+
+run_test2:
+	$(CC) $(CFLAGS) test.c hmm.h -o test
+	./test modellist.txt testing_data2.txt result2.txt
 
 accuracy:
 	paste result1.txt testing_answer.txt | awk '$$1 == $$3 {cnt++} END {print cnt/2500}'
