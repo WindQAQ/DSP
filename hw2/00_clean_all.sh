@@ -1,11 +1,11 @@
 #!/bin/bash
 
-#if [ -d MFCC/ ]; then
-#	echo "rm MFCC/ -r"
-#	rm MFCC/ -r
-#	echo "mkdir MFCC"
-#	mkdir MFCC
-#fi
+if [ -d MFCC/ ]; then
+	echo "rm MFCC/ -r"
+	rm MFCC/ -r
+	echo "mkdir MFCC"
+	mkdir MFCC
+fi
 
 if [ -d hmm/ ]; then
 	echo "rm hmm/ -r"
