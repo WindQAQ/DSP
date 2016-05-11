@@ -5,7 +5,7 @@ function parse()
 	LANG=zh_TW.big5
 	LC_ALL=zh_TW.big5
 
-	awk -F '[ /]' '{
+	gawk -F '[ /]' '{
 						for(i=1; i<=NF; i++){
 							if(!x[$1,substr($i,1,1)]++){
 								len[substr($i,1,1)]++; 
