@@ -48,7 +48,6 @@ LogP Viterbi(Ngram& lm, VocabMap& map, VocabString* words, unsigned count)
 		Pro[0][i] = curP;
 		IntToIndex[0][i] = w;
 		BackTrack[0][i] = 0;
-		// printf("start: %s, p: %e\n", vocB.getWord(w), curP);
 	}
 }
 
@@ -68,16 +67,11 @@ LogP Viterbi(Ngram& lm, VocabMap& map, VocabString* words, unsigned count)
 				if(curP == LogP_Zero && unigramP == LogP_Zero)
 					curP = FAKE_ZERO;
 
-				//if(t==1)
-				//	printf("word: %s, pre: %s, cur: %.6f, pre: %.6f --> %.6f\n", vocB.getWord(w), vocB.getWord(IntToIndex[t-1][i]), curP, Pro[t-1][i], curP+Pro[t-1][i]);
-
 				curP += Pro[t-1][i];		
 		
 				if(curP > maxP){
 					maxP = curP;
 					BackTrack[t][j] = i;
-				//if(t==1)
-				//	printf("in, word: %s, pre: %s, cur: %.6f, pre: %.6f, max: %.6f\n", vocB.getWord(w), vocB.getWord(IntToIndex[t-1][i]), curP, Pro[t-1][i], curP);
 				}
 			}
 			Pro[t][j] = maxP;
@@ -148,4 +142,3 @@ int main(int argc, char *argv[])
  
 	return 0;
 }
-
