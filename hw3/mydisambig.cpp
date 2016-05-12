@@ -65,7 +65,7 @@ LogP Viterbi(Ngram& lm, VocabMap& map, VocabString* words, unsigned count)
 				LogP curP = lm.wordProb(index, context);
 				LogP unigramP = lm.wordProb(index, emptyContext);
 				
-				if(unigramP == LogP_Zero)
+				if(curP == LogP_Zero && unigramP == LogP_Zero)
 					curP = FAKE_ZERO;
 
 				//if(t==1)
