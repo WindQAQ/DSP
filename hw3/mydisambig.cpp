@@ -10,7 +10,7 @@
 #endif
 
 #ifndef FAKE_ZERO
-#define FAKE_ZERO -10000
+#define FAKE_ZERO -100
 #endif
 
 const VocabIndex emptyContext[] = {Vocab_None};
@@ -97,7 +97,7 @@ LogP Viterbi(Ngram& lm, VocabMap& map, VocabString* words, unsigned count)
 		path[t] = BackTrack[t+1][path[t+1]];
 
 	for(int t = 0; t < count; t++)
-		printf("%s ", vocB.getWord(IntToIndex[t][path[t]]));
+		printf("%s%s", vocB.getWord(IntToIndex[t][path[t]]), (t == count-1)? "\n": " ");
 
 	return maxP;
 }
@@ -106,12 +106,11 @@ void recognize_file(Ngram& lm, VocabMap& map, File& testdata)
 {
 	char* line = NULL;
 	while(line = testdata.getline()){
-		VocabString WordsInLine[MAXWORDS];
-		unsigned count = Vocab::parseWords(line, WordsInLine, maxWordsPerLine); 
-
-		printf("%s ", Vocab_SentStart); // <s> at the beginning
-		LogP MaxP = Viterbi(lm, map, WordsInLine, count);
-		printf("%s\n", Vocab_SentEnd); // </s> at the end
+		VocabString WordsInLine[maxWordsPerLine];
+		unsigned count = Vocab::parseWords(line, &WordsInLine[1], maxWordsPerLine);
+		WordsInLine[0] = "<s>";
+		WordsInLine[count+1] = "</s>";
+		LogP MaxP = Viterbi(lm, map, WordsInLine, count+2);
 	}
 }
 
