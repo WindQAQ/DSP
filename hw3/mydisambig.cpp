@@ -116,21 +116,21 @@ void recognize_file(Ngram& lm, VocabMap& map, File& testdata)
 
 int main(int argc, char *argv[])
 {
-    ngram_order = atoi(argv[8]);
+	ngram_order = atoi(argv[8]);
 
 	Ngram lm(voc, ngram_order);	
 	VocabMap map(vocZ, vocB);
 	
 	/* read Language Model and ZhuYin-to-Big5 map */
-    {
-        File lmFile(argv[6], "r" );
-        lm.read(lmFile);
-        lmFile.close();
+{
+	File lmFile(argv[6], "r" );
+	lm.read(lmFile);
+	lmFile.close();
 
-		File mapfile(argv[4], "r");
-		map.read(mapfile);
-		mapfile.close();
-    }
+	File mapfile(argv[4], "r");
+	map.read(mapfile);
+	mapfile.close();
+}
 	
 	/* recognize testdata (argv[2])*/
 	File testdata(argv[2], "r");
@@ -138,6 +138,6 @@ int main(int argc, char *argv[])
 	recognize_file(lm, map, testdata);
 	
 	testdata.close();
- 
+
 	return 0;
 }
