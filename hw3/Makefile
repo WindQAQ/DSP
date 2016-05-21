@@ -43,7 +43,7 @@ $(RESULT1): disambig
 	fi;
 	@for i in $(shell seq 1 10) ; do \
 		echo "Running $$i.txt"; \
-		./$< -text $$i.txt -map $(TO) -lm $(LM) -order 2 > $@/$$i.txt; \
+		./$< -text testdata/$$i.txt -map $(TO) -lm $(LM) -order 2 > $@/$$i.txt; \
 	done;
 
 $(RESULT2): $(TARGET)
@@ -53,7 +53,7 @@ $(RESULT2): $(TARGET)
 	fi;
 	@for i in $(shell seq 1 10) ; do \
 		echo "Running $$i.txt"; \
-		./$< -text $$i.txt -map $(TO) -lm $(LM) -order 2 > $@/$$i.txt; \
+		./$< -text testdata/$$i.txt -map $(TO) -lm $(LM) -order 2 > $@/$$i.txt; \
 	done;
 
 $(RESULT3): $(TARGETV2)
@@ -63,7 +63,7 @@ $(RESULT3): $(TARGETV2)
 	fi;
 	@for i in $(shell seq 1 10) ; do \
 		echo "Running $$i.txt"; \
-		./$< -text $$i.txt -map $(TO) -lm $(LM) -order 2 > $@/$$i.txt; \
+		./$< -text testdata/$$i.txt -map $(TO) -lm $(LM) -order 2 > $@/$$i.txt; \
 	done;
 
 map: $(MAP)
